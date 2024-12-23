@@ -1,5 +1,5 @@
-# Module: model_training.py
 
+from imports import *
 class Combo():
     def __init__(self, df=None, agg_func=None, filt_func=None, smooth_func=None, tester=None, lookback_period=None):
         
@@ -272,7 +272,6 @@ class Agg():
 
             if correlation:
                 print(qid)
-                display(data.corr())
 
             if pca:
                 # PCA model require non-NaN data
@@ -304,7 +303,7 @@ class Agg():
         return Agg.uncertainty_agg_helper(df, groups=False)
     
     @staticmethod
-    def uncertainty_agg_helper(df, uncertainty=UNCERTAINTY, uncertainty_groups=UNCERTAINTY_GROUPS, groups=True):
+    def uncertainty_agg_helper(df, uncertainty=UNCERTAINTY, uncertainty_groups=[1], groups=True):
         
         # This function does not drop the first row to keep formatting consistent for future functions,
         # but doing so would be beneficial since the first row doesn't seem to contain healthy data

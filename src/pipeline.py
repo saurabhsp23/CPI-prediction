@@ -1,8 +1,5 @@
-# Module: visualization.py
-
-# Content from cell_09.py
-# Content from cell 9
-
+from imports import *
+from LR_implementation import *
 class Test():
     linear_reg = LinearRegression()
     stepwise_reg = StepwiseRegression(criterion='bic', verbose=False)

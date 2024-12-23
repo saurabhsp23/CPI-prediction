@@ -1,5 +1,4 @@
-
-
+from imports import *
 class InvalidOperation(Exception):
     pass
 
@@ -8,8 +7,6 @@ class InvalidOperation(Exception):
     # Includes all testing models here for later use
     MODELS = []
 
-# Content from cell_03.py
-# Content from cell 3
 
 class StepwiseRegression:
     def __init__(self, criterion='aic', verbose=False):
