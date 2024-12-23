@@ -14,11 +14,7 @@ This repository aims at developing analytics based on responses from surveys gen
 4. Identify the best predictors with input from the team.
 
 
-# Modular Pipeline Documentation
-
-This repository contains a modular pipeline for data processing, model training, and evaluation, designed to work seamlessly with various preprocessing and aggregation techniques.
-
-## Directory Structure
+## Project Structure
 
 - **`main.py`**: The entry point of the pipeline. Initializes and runs the modular pipeline.
 - **`imports.py`**: Contains all library imports used across the pipeline.
