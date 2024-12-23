@@ -14,21 +14,59 @@ This repository aims at developing analytics based on responses from surveys gen
 4. Identify the best predictors with input from the team.
 
 
+# Modular Pipeline Documentation
 
-## Structure
+This repository contains a modular pipeline for data processing, model training, and evaluation, designed to work seamlessly with various preprocessing and aggregation techniques.
 
-1. **imports.py**: Contains all the import statements for the pipeline.
-2. **data_processing.py**: Functions for data loading, preprocessing, and feature engineering.
-3. **model_training.py**: Functions for training, optimizing, and saving models.
-4. **evaluation.py**: Functions for evaluating models and generating reports.
-5. **visualization.py**: Functions for visualizing results and creating summary charts.
-6. **utils.py**: General-purpose utility functions.
-7. **main.py**: The entry point to run the pipeline.
+## Directory Structure
 
-## Usage
+- **`main.py`**: The entry point of the pipeline. Initializes and runs the modular pipeline.
+- **`imports.py`**: Contains all library imports used across the pipeline.
+- **`pipeline.py`**: Core pipeline logic, including data reading, formatting, and executing combinations of operations.
+- **`combined_aggregation.py`**: Defines aggregation and combination functions.
+- **`utils.py`**: Utility functions to assist with pipeline operations, including metric evaluation and debugging.
+- **`smooth.py`**: Smoothing techniques such as moving average and exponential smoothing.
+- **`filter.py`**: Filtering methods to preprocess data, such as filling missing values using the Prophet model.
 
-1. Install required dependencies by referring to the imports in `imports.py`.
-2. Modify the function placeholders in each module as per your requirements.
-3. Run `main.py` to execute the pipeline.
+## Modules Overview
 
+### `pipeline.py`
+Defines the `Pipeline` class that:
+- Reads and formats data.
+- Combines aggregated data with indicators.
+- Executes a series of operations using specified combinations.
+- Outputs processed results and metrics.
+
+### `combined_aggregation.py`
+Provides aggregation functions and the `Combo` class for processing data:
+- Includes methods for combining data using smoothing and filtering techniques.
+- Evaluates performance metrics (R², MAE, MAPE).
+- Supports running models with different configurations.
+
+### `utils.py`
+Utility functions for:
+- Retrieving class methods dynamically.
+- Evaluating pipeline metrics and finding optimal configurations.
+
+### `smooth.py`
+Implements smoothing techniques such as:
+- Moving Average (`smooth1`).
+- Exponential Smoothing (`smooth2`).
+- Lowess Smoothing (`smooth3`).
+- Fourier Transform Smoothing (`smooth4`).
+
+### `filter.py`
+Implements filtering methods such as:
+- Prophet-based NaN filling (`filter1`).
+- Placeholder filters (`filter2`, `filter3`).
+
+## How to Use
+
+1. **Install Dependencies**: Ensure you have all required libraries installed. Refer to `imports.py` for the list.
+2. **Prepare Data**: Place the necessary data files in the `../Data` directory or configure the `base_path` parameter in `main.py`.
+3. **Run Pipeline**:
+   ```bash
+   python main.py
+   ```
+4. **Results**: The pipeline will process the data, train models, and output metrics. Results and intermediate files are saved in the `results/` directory.
 
