@@ -13,3 +13,22 @@ This repository aims at developing analytics based on responses from surveys gen
 3. Incorporate alternative data sources.
 4. Identify the best predictors with input from the team.
 
+
+
+## Structure
+
+1. **imports.py**: Contains all the import statements for the pipeline.
+2. **data_processing.py**: Functions for data loading, preprocessing, and feature engineering.
+3. **model_training.py**: Functions for training, optimizing, and saving models.
+4. **evaluation.py**: Functions for evaluating models and generating reports.
+5. **visualization.py**: Functions for visualizing results and creating summary charts.
+6. **utils.py**: General-purpose utility functions.
+7. **main.py**: The entry point to run the pipeline.
+
+## Usage
+
+1. Install required dependencies by referring to the imports in `imports.py`.
+2. Modify the function placeholders in each module as per your requirements.
+3. Run `main.py` to execute the pipeline.
+
+
