@@ -49,18 +49,3 @@ This repository encompasses three sub-projects aimed at developing analytics bas
 4. Refine the framework with confidence measures.
 5. Develop trading strategies based on alt-data signals.
 
-## Customization and Extensions
-Throughout the course of this project lab, if new ideas arise, the above projects are customizable and may be extended or redefined to identify follow-on projects.
-
-## Contact
-- (TODO)
-
-
-## Enhanced Project Structure
-- `src/`: Source code organized by modules.
-- `data/`: Datasets used in the project.
-- `docs/`: Documentation and related materials.
-- `tests/`: Unit tests.
-- `configs/`: Configuration files.
-- `results/`: Project outputs and results.
-- `examples/`: Example scripts and notebooks.
