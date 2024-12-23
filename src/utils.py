@@ -1,7 +1,4 @@
-# Module: utils.py
 
-# Content from cell_11.py
-# Content from cell 11
 
 def find_best_metric(pipeline_dict, metric_name, combination_criteria=()):
     """
@@ -63,14 +60,3 @@ df_agg = ex_pipeline.data_filter(window_size=rolling_window_size)
 
 
 x=ex_pipeline.run()
-
-# Utility functions for general-purpose tasks.
-
-def helper_function_1(*args, **kwargs):
-    """Placeholder for helper_function_1"""
-    pass
-
-def helper_function_2(*args, **kwargs):
-    """Placeholder for helper_function_2"""
-    pass
-

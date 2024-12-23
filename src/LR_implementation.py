@@ -1,15 +1,8 @@
-# Module: data_processing.py
 
-# Content from cell_01.py
-# Content from cell 1
 
 class InvalidOperation(Exception):
     pass
 
-# Content from cell_02.py
-# Content from cell 2
-
-class Constants:
     LOOKBACK_PERIOD = 70
     DATA_BASE_PATH = '../Data'
     # Includes all testing models here for later use
@@ -77,18 +70,4 @@ class StepwiseRegression:
         X_selected = X[:, self.features]
         X_selected_with_const = sm.add_constant(X_selected, has_constant='add')
         return self.model.predict(X_selected_with_const)
-
-# Handles data loading, preprocessing, and feature engineering.
-
-def load_data(*args, **kwargs):
-    """Placeholder for load_data"""
-    pass
-
-def preprocess_data(*args, **kwargs):
-    """Placeholder for preprocess_data"""
-    pass
-
-def feature_engineering(*args, **kwargs):
-    """Placeholder for feature_engineering"""
-    pass
 

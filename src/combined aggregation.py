@@ -140,9 +140,6 @@ class Combo():
 
     
 
-# Content from cell_05.py
-# Content from cell 5
-
 class Agg():
     '''
     Class containing all the different aggregate functions. When adding new functions, just add a new static function
