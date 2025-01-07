@@ -1,5 +1,32 @@
 
 from imports import *
+
+TREAT_AS_MULTI = {96: [1109, 1110, 1111], 316: [1820, 1821, 1822, 1823], 597: [1808, 1809, 1810, 1811, 1812, 1813],
+                  664: [1827, 1829, 1830, 1831, 1832, 1833]}
+GRADIENT = {97: [], 98: [], 101: [], 103: [], 104: [], 105: [], 106: [], 107: [], 108: [], 109: [], 110: [], 153: [],
+            154: [], 155: [], 156: [], 158: [], 159: [], 170: [], 173: [], 182: [], 183: [],
+            316: [1820, 1821, 1822, 1823, 1824], 335: [], 337: [], 338: [], 339: [], 340: [], 341: [], 342: [], 583: [],
+            584: [], 585: [], 586: [1090], 587: [1093], 595: [], 663: [],
+            664: [1827, 1829, 1830, 1831, 1832, 1833, 1834], 2400: [], 2401: [], 2402: [], 2403: [], 2406: [], 2428: [],
+            2429: [3370], 2464: [3671], 2465: [3677], 2466: [3683, 3684], 2467: [3690], 2468: [3695], 2474: [3742]}
+UNCERTAINTY = {585: 1087, 586: 1090, 587: 1093, 2429: 3370, 2464: 3671, 2465: 3677, 2466: 3683, 2467: 3690, 2468: 3695,
+               2474: 3742}
+SUBCAT = {'Economic Expectations': [2464, 2465, 2466, 2467, 2468],
+          'Economic Trends': [338, 339, 340, 341, 342, 583, 584, 585, 586, 587],
+          'Employment': [316, 664, 2406, 2407],
+          'Employment Effects': [597],
+          'General Shopping Trends': [182, 183],
+          'Grocery': [595],
+          'Home Improvement': [100, 663],
+          'Home Ownership': [96, 101],
+          'Home Value Prediction': [97, 98],
+          'Inflation': [2426, 2427, 2428, 2429, 2474],
+          'Online Retail': [170, 173],
+          'Personal Finances': [335, 337, 2400, 2401, 2402, 2403],
+          'Physical Retail': [153, 154, 155, 156, 158, 159, 184],
+          'Spending Expectations': [103, 104, 105, 106, 107, 108, 109, 110]}
+
+
 class Combo():
     def __init__(self, df=None, agg_func=None, filt_func=None, smooth_func=None, tester=None, lookback_period=None):
         
@@ -9,16 +36,15 @@ class Combo():
         self.smooth_func = smooth_func
         self.test = tester
         self.lookback_period = lookback_period
-        
-        
-        
-    '''
-    Processes the dataframe passed in with the aggregate function, filter function, then smooth function
-    in that order. Can eventually update this to allow for multiple aggregate, filter, and smoothing operations
-    or to have the order of operations changed.
-    '''
     
     def process_df(self):
+
+        """
+        Processes the dataframe passed in with the aggregate function, filter function, then smooth function
+        in that order. Can eventually update this to allow for multiple aggregate, filter, and smoothing operations
+        or to have the order of operations changed.
+        """
+
         try:
             if self.agg_func:
                 self.df = self.agg_func(self.df)
@@ -39,13 +65,13 @@ class Combo():
             
             
     def performance_metrics(self, y_pred, y_act):
-        '''
+        """
         Print performance metrics such as R-squared, MAE, and MAPE.
 
         Args:
             y_pred (list): Predicted values.
             y_act (list): Actual values.
-        '''
+        """
         rsquared = r2_score(y_pred,y_act)
         mae = mean_absolute_error(y_pred,y_act)
         mape = mean_absolute_percentage_error(y_pred,y_act)
@@ -72,17 +98,14 @@ class Combo():
     
     
     def run_model(self, model = LinearRegression(), label = 'LinearRegression'):
-        '''
+        """
+        
         Walk forward train/validate split using a machine learning model.
 
-        Args:
-            df (pd.DataFrame): Combined DataFrame with monthly aggregated data and indicator data.
-            lookback_period (int): The number of periods to lo/ok back for training.
-            model: The machine learning model to use for predictions.
-        '''
+        """
         
         lookback_period = self.lookback_period
-        df=self.df
+        df =self.df
         
         df = df.ffill()#.dropna()
         df = df.dropna(axis=1, how='all')  # drop cols with all Nans
@@ -141,35 +164,17 @@ class Combo():
     
 
 class Agg():
-    '''
+    """
     Class containing all the different aggregate functions. When adding new functions, just add a new static function
     to the class and give it a distinct name. All the input outputs of the functions must be of the same format
     unless in special cases, but then the user must be careful with handling the rest of the pipeline.
-    '''
-
-    TREAT_AS_MULTI = {96: [1109, 1110, 1111], 316: [1820, 1821, 1822, 1823], 597: [1808, 1809, 1810, 1811, 1812, 1813], 664: [1827, 1829, 1830, 1831, 1832, 1833]}
-    GRADIENT = {97: [], 98: [], 101: [], 103: [], 104: [], 105: [], 106: [], 107: [], 108: [], 109: [], 110: [], 153: [], 154: [], 155: [], 156: [], 158: [], 159: [], 170: [], 173: [], 182: [], 183: [], 316: [1820, 1821, 1822, 1823, 1824], 335: [], 337: [], 338: [], 339: [], 340: [], 341: [], 342: [], 583: [], 584: [], 585: [], 586: [1090], 587: [1093], 595: [], 663: [], 664: [1827, 1829, 1830, 1831, 1832, 1833, 1834], 2400: [], 2401: [], 2402: [], 2403: [], 2406: [], 2428: [], 2429: [3370], 2464: [3671], 2465: [3677], 2466: [3683, 3684], 2467: [3690], 2468: [3695], 2474: [3742]}
-    UNCERTAINTY = {585:1087, 586:1090, 587:1093, 2429:3370, 2464:3671, 2465:3677, 2466:3683, 2467:3690, 2468:3695, 2474:3742}
-    SUBCAT = {'Economic Expectations': [2464, 2465, 2466, 2467, 2468],
-                'Economic Trends': [338, 339, 340, 341, 342, 583, 584, 585, 586, 587],
-                'Employment': [316,  664, 2406, 2407],
-                'Employment Effects': [597],
-                'General Shopping Trends': [182, 183],
-                'Grocery': [595],
-                'Home Improvement': [100, 663],
-                'Home Ownership': [ 96, 101],
-                'Home Value Prediction': [97, 98],
-                'Inflation': [2426, 2427, 2428, 2429, 2474],
-                'Online Retail': [170, 173],
-                'Personal Finances': [335,  337, 2400, 2401, 2402, 2403],
-                'Physical Retail': [153, 154, 155, 156, 158, 159, 184],
-                'Spending Expectations': [103, 104, 105, 106, 107, 108, 109, 110]}
+    """
     
     
     def __init__(self, combinations):
         self.combinations = combinations
     
-    '''
+    """
     run_agg_process: Takes in a list of lists that provides the names of the functions to aggregate. Inner lists
     are 'steps' and they do the listed aggregations in parallel and then append the resulting columns.
     Each subsequent step will then do new aggregations based on the dataframe produced by the previous step rather
@@ -182,7 +187,7 @@ class Agg():
     Input: DataFrame to aggregate; list of lists that describes the procedure to aggregate
     
     Output: DataFrame of aggregated data
-    '''
+    """
     @staticmethod
     def run_agg_process(df, agg_procedure):
         current_step = df.copy()
@@ -197,7 +202,7 @@ class Agg():
             
         return current_step
     
-    '''
+    """
     multi_and_gradient: Aggregate the question-answer pairs based on whether they are multi-select or not level. 
     Specifically, treat multi-select questions as default and aggregate by each non-multiselect quesion by assigning 
     value to correseponding answers. For Uncertainty feature, identify answers indicating uncertainty and aggregate 
@@ -206,7 +211,7 @@ class Agg():
     Input: DataFrame of 'daily_aggregate.pq'
 
     Output: DataFrame
-    '''
+    """
     @staticmethod
     def multi_and_gradient(df, treat_as_multiselect=TREAT_AS_MULTI, gradient=GRADIENT, uncertainty=UNCERTAINTY):
 
@@ -252,14 +257,14 @@ class Agg():
         return df_exp.dropna(axis=1, how='all')
     
 
-    '''
+    """
     Agg2: Aggregate the answers by subcategory level. 
     Filter the intra-question aggregated dataframe by each subcategory and perform basic aggregations, including mean and PCA(require non-Nan data)
 
     Input: DataFrame
 
     Output: DataFrame
-    '''
+    """
     @staticmethod
     def agg2(df, subcat=SUBCAT, pca=False, correlation=False):
         df_sub_agg = pd.DataFrame(index = df.index)
@@ -360,25 +365,4 @@ class Agg():
         
         return pd.concat([output, non_q_df], axis=1)
 
-# Content from cell_06.py
-# Content from cell 6
-
-# Aggregate demo
-
-df = pd.read_pickle('dadf_relevant.pkl').asfreq('d')
-Agg.run_agg_process(df, [['multi_and_gradient', 'uncertainty_agg_groups'], ['subcat_agg']])
-
-# Responsible for training, optimizing, and saving models.
-
-def train_model(*args, **kwargs):
-    """Placeholder for train_model"""
-    pass
-
-def optimize_model(*args, **kwargs):
-    """Placeholder for optimize_model"""
-    pass
-
-def save_model(*args, **kwargs):
-    """Placeholder for save_model"""
-    pass
 

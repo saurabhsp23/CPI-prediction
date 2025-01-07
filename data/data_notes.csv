@@ -1,0 +1,13 @@
+The following are notes related to the survey datasets in the Data/ folder for this project: 
+
+raw.pq : The raw data we have. Stored into a format  respondentid (unique, not tracked across time) + demographic information and question-answers pairs responses to all questions. (1: selected, -1: not chosen, 0: not presented). For the questions it is under the format Q[questionid]A[answerid]. You also get a “weight” column that is supposed to correct for demographic bias.
+
+meta.pq : This is the metadata for the questions, to know the texts for the questions and answers.
+filtered_respondentid.txt : This is a file for in progress work in filtering “bad actors” that we suspect might bias the data.
+Finally the other files are different aggregations of the raw data. (You should be able to compute that yourselves, this is more to help you get started as the raw data is quite big, and might be hard to fit into memory. By the way, if working with the raw data, you should really only load what you need columns argument in pd.read_parquet. Excluding the questions answers columns, the other ones are ['datesubmitted', 'age', 'gender', 'race', 'householdincome', 'education', 'urbandensity', 'partisanship', 'censusregion', 'censusdivision', 'voterregistration', 'weight'])
+
+daily_aggregate.pq : Raw data aggregated daily
+
+weighted_daily_aggregate.pq : Weighted (for census) data aggregated daily
+
+filtered_weighted_daily_aggregate.pq : The data is further filtered out of the “bad respondents”.

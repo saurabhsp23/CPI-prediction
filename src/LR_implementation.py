@@ -3,7 +3,7 @@ class InvalidOperation(Exception):
     pass
 
     LOOKBACK_PERIOD = 70
-    DATA_BASE_PATH = '../Data'
+    DATA_BASE_PATH = '../data'
     # Includes all testing models here for later use
     MODELS = []
 

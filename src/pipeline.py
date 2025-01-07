@@ -1,32 +1,19 @@
-from imports import *
 from LR_implementation import *
-class Test():
-    linear_reg = LinearRegression()
-    stepwise_reg = StepwiseRegression(criterion='bic', verbose=False)
-    lasso = Lasso(alpha=0.01)
-    xgboosting = xgb.XGBRegressor(objective ='reg:squarederror', 
-                         colsample_bytree = 0.3, 
-                         learning_rate = 0.1,
-                         max_depth = 5, 
-                         alpha = 10, 
-                         n_estimators = 10)
-    def __init__(self, combinations):
-        self.combinations = combinations
-
-
-# Content from cell_10.py
-# Content from cell 10
+from combined_aggregation import *
+from filter import *
+from smooth import *
+from tests import *
 
 class Pipeline():
-    '''
+    """
     Run through a bunch of different processes based on combinations of agg, filt, etc. agg, filt, and smooth are
     instances of the Agg, Filter, and Smooth classes. Each class is initialized with a set of combinations of which
     functions we want to test together. The combination attribute will be used to test different combinations of these
     operatios.
-    '''
+    """
     
     
-    def __init__(self, agg, filt, smooth, test, lookback_period=12, base_path='../Data'):
+    def __init__(self, agg, filt, smooth, test, lookback_period=12, base_path='../data'):
         
         self.agg = agg
         self.filt = filt
@@ -37,17 +24,15 @@ class Pipeline():
         
 
     def read_and_format_data(self):
-        
-        '''
+        """
         Read in time series of question responses from the daily_aggregate.parquet and
         initial_indicator_dataset.csv files.
 
         Args:
             base_path (str): The base path for data files.
 
-        Returns:
-            pd.DataFrame, pd.DataFrame: A tuple of DataFrames containing daily aggregate data and indicator data.
-        '''
+        """
+        
         # Read daily aggregate file (predictor library)
         df_agg = pd.read_parquet(join(self.base_path,'daily_aggregate.pq'))
 
@@ -66,7 +51,7 @@ class Pipeline():
 
         
     def data_filter(self, **kwargs):
-        '''
+        """
             Filter data using a rolling window.
 
             Args:
@@ -76,7 +61,7 @@ class Pipeline():
 
             Returns:
                 pd.DataFrame: The filtered DataFrame.
-        '''
+        """
         window_size = kwargs['window_size']     # set window size for moving average filter
         df_smooth = self.df_agg.rolling(window_size).mean()   # apply moving average filter
         df_smooth = df_smooth.tail(-window_size+1)
@@ -84,9 +69,8 @@ class Pipeline():
         return df_smooth
 
     
-    # TODO Consider other aggregators
     def myagg(self, x):
-        '''
+        """
         Example aggregator function that just takes the mean.
 
         Args:
@@ -94,12 +78,12 @@ class Pipeline():
 
         Returns:
             np.ndarray: Aggregated data.
-        '''
+        """
         return np.mean(x, axis=0)
 
     
     def get_combined_data_with_given_indicator(self, df_indicator_all, df_daily_agg, indicator_col ='CONSSENT Index'):
-        '''
+        """
             Combine indicator data with daily aggregate data. Also as indicator data is monthly change the
             daily aggregate data to monthly.
 
@@ -110,7 +94,7 @@ class Pipeline():
 
             Returns:
                 pd.DataFrame: Combined DataFrame with monthly aggregated data.
-        '''
+        """
         df_indicator = df_indicator_all[indicator_col]  # restrict the indicators df on a single indicator
         df_indicator = df_indicator[df_indicator.diff() != 0].tail(-1)  # get the dates when new values of the
         # indicator arrived (e.g. release dates)
@@ -193,8 +177,7 @@ class Pipeline():
                     
                     combo.process_df()
 
-                    reg_final_stats_df_pct_change.loc[indicator], pct_change_reg_coefs_df = combo.run_model(
-                                                                                            model=tester)
+                    reg_final_stats_df_pct_change.loc[indicator], pct_change_reg_coefs_df = combo.run_model()
                     pipeline_dict[indicator] = reg_final_stats_df_pct_change.loc[indicator]
                     df_comb_processed_change.to_csv(f'../results/{indicator}_combined_monthly_processed_data.csv')
                     pct_change_reg_coefs_df.to_csv(f'../results/{indicator}_reg_pct_change_coefs.csv')
@@ -203,14 +186,4 @@ class Pipeline():
 
 
         return pipeline_dict
-
-# Contains visualization utilities for results and summaries.
-
-def plot_results(*args, **kwargs):
-    """Placeholder for plot_results"""
-    pass
-
-def create_summary_charts(*args, **kwargs):
-    """Placeholder for create_summary_charts"""
-    pass
 

@@ -1,0 +1,180 @@
+answerid,answertext
+1109,Own
+1110,Rent
+1111,"I live in a home that someone else, besides me, owns"
+1119,I expect it to increase
+1120,I expect it to remain the same
+1121,I expect it to decrease
+1125,"Yes, I plan on making major home improvements (e.g. a full kitchen or bath remodel, plumbing or electrical work, building an addition, replacing your roof)"
+1126,"Yes, I plan on making minor home improvements (e.g. painting, replacing appliances, patio/deck refurbishment)"
+1127,No
+1114,Selling your current home and moving to a larger home
+1116,Selling your current home and moving to a smaller home
+1118,Not selling your current home
+1168,I expect to spend less
+1169,I expect to spend the same amount
+1170,I expect to spend more
+1249,Almost every day
+1250,A few times per week
+1251,About once per week
+1252,A few times per month
+1253,About once per month
+1254,A few times per year
+1377,0% Online / 100% Physical Stores
+1378,10% Online / 90% Physical Stores
+1379,20% Online / 80% Physical Stores
+1380,30% Online / 70% Physical Stores
+1381,40% Online / 60% Physical Stores
+1382,50% Online / 50% Physical Stores
+1383,60% Online / 40% Physical Stores
+1384,70% Online / 30% Physical Stores
+1385,80% Online / 20% Physical Stores
+1386,90% Online / 10% Physical Stores
+1387,100% Online / 0% Physical Stores
+1214,Walmart
+1215,Target
+1216,Sam's Club
+1217,Costco
+1218,BJ's
+1219,Dollar General
+1220,Family Dollar
+1221,CVS
+1222,Walgreens
+1223,Kohl's
+1224,Best Buy
+1225,Bed Bath & Beyond
+1226,Petco
+1227,PetSmart
+1228,Lowe's
+1229,Home Depot
+1230,I do not shop at any of these retailers
+1818,I am employed
+1819,I am not employed
+1820,I am retired
+1821,I am a student
+1822,I am a full-time stay at home parent
+1823,I am a stay at home parent
+1824,Other
+1017,I do not make enough to pay my living expenses
+1018,"I make enough to pay my living expenses, but I am not saving anything"
+1019,"I make enough to pay my living expenses, and I am saving a little"
+1020,"I make enough to pay my living expenses, and I am saving a lot"
+1025,$0
+1026,"$1 - $2,500"
+1027,"$2,500 - $5,000"
+1028,"$5,000 - $10,000"
+1029,"$10,000 - $20,000"
+1030,"$20,000 - $50,000"
+1031,"$50,000 or more"
+1064,Good
+1065,Normal
+1066,Bad
+1067,Jobs are plentiful
+1068,Jobs are not so plentiful
+1069,Jobs are hard to get
+1070,Better than they are now
+1071,The same as they are now
+1072,Worse than they are now
+1073,More jobs available than there are now
+1074,The same number of jobs available as there are now
+1075,Fewer jobs available than there are now
+1076,Increase
+1077,Stay the same
+1078,Decrease
+1079,Better off
+1080,The same today as a year ago
+1081,Worse off
+1083,About the same
+1085,Good times
+1086,Bad times
+1087,Not sure
+1088,We'll have continuous good times during the next five years or so
+1089,We'll have periods of widespread unemployment or depression during the next five years or so
+1091,Good time to buy
+1092,Bad time to buy
+1808,"Yes, I've been laid off / furloughed"
+1809,"No, I am still employed"
+1810,My hours have been reduced but I am still working
+1811,"I was laid off, but I have since found another job"
+1812,"I was laid off, but I have since been rehired at my same job"
+1813,"I was not working before the coronavirus outbreak (e.g. retired, disabled, student, homemaker, etc.)"
+1128,"Under $1,000"
+1129,"$1,001-$5,000"
+1130,"$5,001-$10,000"
+1131,"$10,001-$20,000"
+1132,"$20,001-$50,000"
+1133,"$50,000-$100,000"
+1134,"$100,000+"
+1825,I am working full-time
+1826,I am working part-time
+1827,I am working without pay on a family farm or for a family business
+1828,"I am not working, but I'm actively looking for work"
+1829,I am not working and I'm not currently looking for work
+1830,I am a full-time stay at home parent / homemaker
+1832,I am a full-time student
+1833,I am disabled and not working
+3100,I will not be making enough to pay my living expenses
+3101,"I will be making enough to pay my living expenses, but not enough to save anything"
+3102,"I will be making enough to pay my living expenses, and enough to save a little"
+3103,"I will be making enough to pay my living expenses, and enough to save a lot"
+3108,Very satisfied
+3109,Somewhat satisfied
+3110,Somewhat dissatisfied
+3111,Very dissatisfied
+3130,I hope to work at my current employer for the rest of my career
+3131,"I have no plans to leave my current employer, however I would entertain new opportunities if they presented themselves"
+3132,I'm definitely open to new opportunities outside of my current employer
+3133,I'm actively looking for new opportunities outside of my current employer
+3134,The money from unemployment benefits and other government programs is enough for me right now
+3135,My family has enough money right now
+3136,I am worried about the risks of COVID-19 in the workplace
+3137,I need to be home to care for children or others in my family
+3138,Wages for my skillset are too low right now
+3139,"I am focusing on acquiring new skills, education, or training"
+3339,Cut back on dining out
+3340,Cut back on driving
+3341,Canceled a monthly subscription
+3342,Switched from a brand name product to store brand
+3343,Canceled a trip/vacation
+3344,Delayed buying a car
+3345,Borrowed money/took on a loan
+3346,Delayed buying a home
+3347,Delayed paying some bills
+3348,Switched from a gas powered vehicle to electric
+3349,None of the above
+3352,Cancel a monthly subscription
+3353,Switch from a brand name product to store brand
+3354,Cancel a trip/vacation
+3355,Delay buying a car
+3356,Borrow money/take out a loan
+3357,Delay buying a home
+3358,Delay paying some bills
+3359,Switch from a gas powered vehicle to electric
+3361,All the time
+3362,Sometimes
+3363,Occasionally
+3364,Rarely
+3365,Never
+3366,Prices are too low right now
+3367,Prices are fine right now
+3368,Prices are slightly high right now
+3369,Prices are very high right now
+3666,Much better than it is today
+3667,Somewhat better than it is today
+3668,About the same as it is today
+3669,Somewhat worse than it is today
+3670,Much worse than it is today
+3672,Much higher than it is today
+3673,Somewhat higher than it is today
+3675,Somewhat lower than it is today
+3676,Much lower than it is today
+3684,I don't know what Bitcoin is
+3685,Much higher than they are today
+3686,Somewhat higher than they are today
+3687,About the same as they are today
+3688,Somewhat lower than they are today
+3689,Much lower than they are today
+3691,Very likely to enter an economic recession
+3692,Somewhat likely to enter an economic recession
+3693,Not very likely to enter an economic recession
+3694,Not likely at all to enter an economic recession

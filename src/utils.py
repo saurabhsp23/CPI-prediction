@@ -36,9 +36,9 @@ def find_best_metric(pipeline_dict, metric_name, combination_criteria=()):
 # Content from cell 12
 
 def get_class_methods(cls):
-    '''
+    """
     Function to get a list of class methods. 
-    '''
+    """
     methods = [name for name, method in inspect.getmembers(cls, predicate=inspect.isfunction) if name != '__init__']
     return methods
 
@@ -47,16 +47,16 @@ def get_class_methods(cls):
 
 
 
-ex_agg = Agg(['agg1'])
-ex_filt = Filter(['filter1'])
-ex_smooth = Smooth(['smooth1'])
-ex_test = Test(['lasso']) # 'linear_reg','lasso', 'stepwise_reg', 'xgboosting'
-ex_pipeline = Pipeline(ex_agg, ex_filt, ex_smooth, ex_test)
-
-ex_pipeline.read_and_format_data()
-# Smoothing the aggregate survey data
-rolling_window_size = 20
-df_agg = ex_pipeline.data_filter(window_size=rolling_window_size)
-
-
-x=ex_pipeline.run()
+# ex_agg = Agg(['agg1'])
+# ex_filt = Filter(['filter1'])
+# ex_smooth = Smooth(['smooth1'])
+# ex_test = Test(['lasso']) # 'linear_reg','lasso', 'stepwise_reg', 'xgboosting'
+# ex_pipeline = Pipeline(ex_agg, ex_filt, ex_smooth, ex_test)
+#
+# ex_pipeline.read_and_format_data()
+# # Smoothing the aggregate survey data
+# rolling_window_size = 20
+# df_agg = ex_pipeline.data_filter(window_size=rolling_window_size)
+#
+#
+# x=ex_pipeline.run()

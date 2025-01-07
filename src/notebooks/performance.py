@@ -293,9 +293,9 @@ METRICS = {
 }
 
 def evaluate(actual: np.ndarray, predicted: np.ndarray, metrics=('mae', 'mse', 'smape', 'umbrae')):
-    '''
+    """
     Evaluate a specific group of error metrics that are defined 
-    '''
+    """
     results = {}
     for name in metrics:
         try:
@@ -306,9 +306,9 @@ def evaluate(actual: np.ndarray, predicted: np.ndarray, metrics=('mae', 'mse', '
     return results
 
 def evaluate_all(actual: np.ndarray, predicted: np.ndarray):
-    '''
+    """
     Evaluate all error metrics specified above  
-    '''
+    """
     return evaluate(actual, predicted, metrics=set(METRICS.keys()))
 
 if __name__ == "__main__":     

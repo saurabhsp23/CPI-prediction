@@ -3,10 +3,10 @@ from os.path import join
 from constants import DAILY_AGG_PATH, INDICATOR_DATA_PATH 
 
 def read_and_format_data():  
-    '''
+    """
     Read in time series of question responses from the daily_aggregate.pq and 
     initial_indicator_dataset.csv files 
-    '''
+    """
     # Read daily aggregate file (predictor library)   
     df_agg = pd.read_parquet(DAILY_AGG_PATH) 
 

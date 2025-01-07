@@ -13,11 +13,11 @@ from scipy.stats import f
 import statsmodels.api as sm
 
 # Constants
-DATA_BASE_PATH = '../Data'
+DATA_BASE_PATH = '../data'
 LOOKBACK_PERIOD = 12
 
 def read_and_format_data(base_path=DATA_BASE_PATH):
-    '''
+    """
     Read in time series of question responses from the daily_aggregate.parquet and
     initial_indicator_dataset.csv files.
 
@@ -26,7 +26,7 @@ def read_and_format_data(base_path=DATA_BASE_PATH):
 
     Returns:
         pd.DataFrame, pd.DataFrame: A tuple of DataFrames containing daily aggregate data and indicator data.
-    '''
+    """
     # Read daily aggregate file (predictor library)
     df_agg = pd.read_parquet(join(base_path,'daily_aggregate.pq'))
 
@@ -40,7 +40,7 @@ def read_and_format_data(base_path=DATA_BASE_PATH):
     return df_agg, df_ind
 
 def data_filter(df_agg,**kwargs):
-    '''
+    """
         Filter data using a rolling window.
 
         Args:
@@ -50,7 +50,7 @@ def data_filter(df_agg,**kwargs):
 
         Returns:
             pd.DataFrame: The filtered DataFrame.
-    '''
+    """
     window_size = kwargs['window_size']     # set window size for moving average filter
     df_smooth = df_agg.rolling(window_size).mean()   # apply moving average filter
     df_smooth = df_smooth.tail(-window_size+1)
@@ -59,7 +59,7 @@ def data_filter(df_agg,**kwargs):
 
 # TODO Consider other aggregators
 def myagg(x):
-    '''
+    """
     Example aggregator function that just takes the mean.
 
     Args:
@@ -67,11 +67,11 @@ def myagg(x):
 
     Returns:
         np.ndarray: Aggregated data.
-    '''
+    """
     return np.mean(x, axis=0)
 
 def get_combined_data_with_given_indicator(df_indicator_all, df_daily_agg, indicator_col ='CONSSENT Index'):
-    '''
+    """
         Combine indicator data with daily aggregate data. Also as indicator data is monthly change the
         daily aggregate data to monthly.
 
@@ -82,7 +82,7 @@ def get_combined_data_with_given_indicator(df_indicator_all, df_daily_agg, indic
 
         Returns:
             pd.DataFrame: Combined DataFrame with monthly aggregated data.
-    '''
+    """
     df_indicator = df_indicator_all[indicator_col]  # restrict the indicators df on a single indicator
     df_indicator = df_indicator[df_indicator.diff() != 0].tail(-1)  # get the dates when new values of the
     # indicator arrived (e.g. release dates)
@@ -117,13 +117,13 @@ def get_combined_data_with_given_indicator(df_indicator_all, df_daily_agg, indic
 
 # TODO Can you expand this to other performance metric ideas?
 def performance_metrics(y_pred, y_act):
-    '''
+    """
     Print performance metrics such as R-squared, MAE, and MAPE.
 
     Args:
         y_pred (list): Predicted values.
         y_act (list): Actual values.
-    '''
+    """
     rsquared = r2_score(y_pred,y_act)
     mae = mean_absolute_error(y_pred,y_act)
     mape = mean_absolute_percentage_error(y_pred,y_act)
@@ -146,14 +146,14 @@ def performance_metrics(y_pred, y_act):
     return (rsquared, mae, mape, p_value)
 
 def run_model(df, lookback_period = LOOKBACK_PERIOD, model = LinearRegression(), label = 'LinearRegression'):
-    '''
+    """
     Walk forward train/validate split using a machine learning model.
 
     Args:
         df (pd.DataFrame): Combined DataFrame with monthly aggregated data and indicator data.
         lookback_period (int): The number of periods to look back for training.
         model: The machine learning model to use for predictions.
-    '''
+    """
     df = df.ffill()#.dropna()
     df = df.dropna(axis=1, how='all')  # drop cols with all Nans
     df=df.replace(np.nan, 0) # now dropping any intial rows with nans

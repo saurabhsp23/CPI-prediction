@@ -1,15 +1,13 @@
-# Module: evaluation.py
-
-
+from imports import *
 class Filter():
     def __init__(self, combinations):
         self.combinations = combinations
         
-    '''
+    """
     Filter1: Fill the NaNs with the Prophet model, which is a procedure for forecasting time series based on 
              an additive model where non-linear trends are fit with yearly, weekly seasonality.
              Here we train the model with the data up to the NaN date, and fill the NaN interval with forecasting data.
-    '''
+    """
     @staticmethod
     def filter1(df):
         for id in df.columns:
