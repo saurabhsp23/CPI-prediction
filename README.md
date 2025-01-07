@@ -56,8 +56,14 @@ Implements filtering methods such as:
 - Prophet-based NaN filling (`filter1`).
 - Placeholder filters (`filter2`, `filter3`).
 
+## How to Use
 
+1. **Install Dependencies**: Ensure you have all required libraries installed. Refer to `imports.py` for the list.
+2. **Prepare Data**: Place the necessary data files in the `../Data` directory or configure the `base_path` parameter in `main.py`.
+3. **Run Pipeline**:
+   ```bash
    python main.py
    ```
 4. **Results**: The pipeline will process the data, train models, and output metrics. Results and intermediate files are saved in the `results/` directory.
+
 
